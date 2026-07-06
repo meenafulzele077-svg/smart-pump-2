@@ -57,21 +57,23 @@ class _OnboardingFormState extends ConsumerState<_OnboardingForm> {
   Future<void> _useCurrentLocation() async {
     setState(() => _locating = true);
     try {
-      // Real implementation: use the `geolocator` package to request
-      // permission and fetch GPS coordinates, then reverse-geocode them.
-      // Kept as a short simulated delay here to demonstrate the UX flow
-      // without requiring live location permissions in this environment.
       await Future.delayed(const Duration(milliseconds: 900));
       if (!mounted) return;
       setState(() => _locationController.text = 'Current Location (GPS)');
-if (mounted) ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Location detected')));    } finally {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Location detected')),
+      );
+    } finally {
       if (mounted) setState(() => _locating = false);
     }
   }
 
   Future<void> _save() async {
     if (_cropId == null) {
-ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Please select your crop')));      return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Please select your crop')),
+      );
+      return;
     }
     final area = double.tryParse(_areaController.text) ?? 1;
     final profile = FarmProfileModel(

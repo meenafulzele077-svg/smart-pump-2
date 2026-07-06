@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-if (mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Exported to $path')));
+
 import '../../core/theme/app_colors.dart';
 import '../../models/analytics_model.dart';
 import '../../providers/analytics_provider.dart';
@@ -70,7 +70,8 @@ class _AnalyticsScreenState extends ConsumerState<AnalyticsScreen>
     if (summary == null) return;
     final service = ref.read(analyticsServiceProvider);
     final path = asPdf ? await service.exportToPdf(summary) : await service.exportToExcel(summary);
-    Fluttertoast.showToast(msg: 'Exported to $path');
+    if (!mounted) return;
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Exported to $path')));
   }
 
   @override
