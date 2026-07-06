@@ -119,7 +119,7 @@ class _PumpTile extends StatelessWidget {
                     borderRadius: BorderRadius.circular(14),
                   ),
                   child: Icon(
-                    Icons.water_pump_rounded,
+                    Icons.plumbing_rounded,
                     color: isRunning ? AppColors.success : theme.colorScheme.onSurfaceVariant,
                   ),
                 ),

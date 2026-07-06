@@ -102,7 +102,7 @@ class _PumpStatusCardState extends ConsumerState<PumpStatusCard>
                     borderRadius: BorderRadius.circular(18),
                   ),
                   child: Icon(
-                    Icons.water_pump_rounded,
+                    Icons.plumbing_rounded,
                     color: isRunning ? Colors.white : theme.colorScheme.onSurfaceVariant,
                     size: 28,
                   ),

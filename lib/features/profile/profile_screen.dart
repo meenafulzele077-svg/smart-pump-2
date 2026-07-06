@@ -69,7 +69,7 @@ class ProfileScreen extends ConsumerWidget {
           const SizedBox(height: 16),
           _SectionCard(
             title: 'My Pumps',
-            icon: Icons.water_pump_rounded,
+            icon: Icons.plumbing_rounded,
             children: [
               pumpsAsync.when(
                 data: (pumps) => Text('${pumps.length} pumps registered to your account',
