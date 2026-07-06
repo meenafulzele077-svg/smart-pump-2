@@ -10,7 +10,7 @@ workflows:
           if [ ! -d "android" ]; then
             flutter create --platforms=android .
           fi
-sed -i 's/compileSdk = flutter.compileSdkVersion/compileSdk = 36/' android/app/build.gradle.kts
+          sed -i 's/compileSdk = flutter.compileSdkVersion/compileSdk = 36/' android/app/build.gradle.kts
       - name: Get Flutter packages
         script: |
           flutter pub get
@@ -19,4 +19,3 @@ sed -i 's/compileSdk = flutter.compileSdkVersion/compileSdk = 36/' android/app/b
           flutter build apk --release
     artifacts:
       - build/app/outputs/flutter-apk/*.apk
-
