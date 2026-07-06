@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
 import '../../core/theme/app_colors.dart';
 import '../../models/irrigation_advisory_model.dart';
@@ -65,16 +64,14 @@ class _OnboardingFormState extends ConsumerState<_OnboardingForm> {
       await Future.delayed(const Duration(milliseconds: 900));
       if (!mounted) return;
       setState(() => _locationController.text = 'Current Location (GPS)');
-      Fluttertoast.showToast(msg: 'Location detected');
-    } finally {
+if (mounted) ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Location detected')));    } finally {
       if (mounted) setState(() => _locating = false);
     }
   }
 
   Future<void> _save() async {
     if (_cropId == null) {
-      Fluttertoast.showToast(msg: 'Please select your crop');
-      return;
+ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Please select your crop')));      return;
     }
     final area = double.tryParse(_areaController.text) ?? 1;
     final profile = FarmProfileModel(
